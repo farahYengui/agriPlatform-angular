@@ -19,9 +19,11 @@ const modal = document.querySelector(".modal");
 const modalButton = document.querySelector(".modal-button");
 const closeButton = document.querySelector(".close-button");
 const scrollDown = document.querySelector(".scroll-down");
+const navbar = document.getElementById("navbar");
 let isOpened = false;
 
 const openModal = () => {
+  navbar.style.visibility ="hidden";
   modal.classList.add("is-open");
   body.style.overflow = "hidden";
 };
@@ -29,6 +31,7 @@ const openModal = () => {
 const closeModal = () => {
   modal.classList.remove("is-open");
   body.style.overflow = "initial";
+  navbar.style.visibility ="visible";
 };
 
 window.addEventListener("scroll", () => {
