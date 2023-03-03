@@ -1,0 +1,28 @@
+#btn{
+    z-index: 10;
+    position: absolute;
+    right: 10px;
+    top: 130px;
+    width: 40px;
+    height: 40px;
+    background-image: url("../../assets/img/pin.png");
+    border: none;
+    background-repeat: no-repeat;
+    background-position: center;
+    border-radius: 5%;
+    box-shadow: 2px gray;
+}
+#save{
+    z-index: 10;
+    position: absolute;
+    right: 10px;
+    top: 200px;
+    width: 40px;
+    height: 40px;
+    background-image: url("../../assets/img/pin.png");
+    border: none;
+    background-repeat: no-repeat;
+    background-position: center;
+    border-radius: 5%;
+    box-shadow: 2px gray;
+}

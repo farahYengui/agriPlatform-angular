@@ -1,0 +1,13 @@
+<div class="main-content">
+
+          <ngui-map (mapReady$)="onMapReady($event)" zoom="10" center="34.7430757,10.7393285" style="margin-top:60px;height: 100%; width: 100%; position: absolute;top: 0px;
+    left: 0px;
+    background-color: rgb(229, 227, 223);">
+              <marker *ngFor="let marker of markers" [position]="marker"
+              draggable="true"></marker>
+              
+          </ngui-map>
+          <button id="btn" (click)="onClick()"></button>
+          <button id="save" (click)="onSave()"></button>
+
+</div>
