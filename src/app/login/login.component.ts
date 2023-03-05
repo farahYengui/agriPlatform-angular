@@ -23,9 +23,10 @@ const navbar = document.getElementById("navbar");
 let isOpened = false;
 
 const openModal = () => {
+  body.style.overflow = "hidden";
   navbar.style.visibility ="hidden";
   modal.classList.add("is-open");
-  body.style.overflow = "hidden";
+  
 };
 
 const closeModal = () => {
