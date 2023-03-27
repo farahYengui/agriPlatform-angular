@@ -10,7 +10,7 @@ import { FooterModule } from './shared/footer/footer.module';
 import { SidebarModule } from './sidebar/sidebar.module';
 
 import { AppComponent } from './app.component';
-
+import { MatIconModule } from '@angular/material/icon';
 import { AdminLayoutComponent } from './layouts/admin-layout/admin-layout.component';
 import { LoginComponent } from './login/login.component';
 // import function to register Swiper custom elements
@@ -27,7 +27,8 @@ register();
     NavbarModule,
     FooterModule,
     SidebarModule,
-    AppRoutingModule
+    AppRoutingModule,
+    MatIconModule
   ],
   declarations: [
     AppComponent,

@@ -2,6 +2,7 @@
 
 * {
   box-sizing: border-box;
+  
 }
 
 body {
@@ -515,6 +516,7 @@ section {
   margin-bottom: 0;
   font-size: 14px;
   color: #919191;
+  
 }
 
 /*--------------------------------------------------------------
@@ -588,6 +590,11 @@ section {
   margin-bottom: 0;
 }
 
+.about-container{
+  display: flex;
+  align-items: center;
+}
+
 /*--------------------------------------------------------------
 # Why Us
 --------------------------------------------------------------*/
@@ -625,6 +632,7 @@ section {
   font-size: 15px;
   margin: 0;
   padding: 0;
+  text-align: justify;
 }
 
 @media (max-width: 768px) {
@@ -673,6 +681,7 @@ section {
   max-width: 100%;
   height: auto;
 }
+
 
 /*--------------------------------------------------------------
 # Services
@@ -728,6 +737,7 @@ section {
   line-height: 24px;
   font-size: 14px;
   margin-bottom: 0;
+  text-align: justify;
 }
 
 .services .icon-box:hover {
@@ -815,6 +825,11 @@ section {
   padding: 80px 0;
 }
 
+.cta-container{
+  display: flex;
+  align-items: center;
+}
+
 .cta h3 {
   color: #fff;
   font-size: 28px;
@@ -864,13 +879,13 @@ section {
 --------------------------------------------------------------*/
 #team-members {
   display: flex;
-  justify-content: center;
-  // width: 100%;
+  flex-direction: row;
+  align-items: center;
 }
 
 .team .member {
   text-align: center;
-  margin-bottom: 20px;
+  margin: 0px 40px 20px 0px;
   box-shadow: 0px 0px 12px 0px rgba(34, 34, 34, 0.07);
   padding: 30px 20px;
   background: #fff;
@@ -899,6 +914,7 @@ section {
   font-size: 14px;
   font-style: italic;
   color: #aaaaaa;
+  text-align: justify;
 }
 
 .team .member .social {
@@ -917,6 +933,15 @@ section {
 .team .member .social i {
   font-size: 18px;
   margin: 0 2px;
+}
+
+.team .biography p {
+  text-align: justify;
+}
+
+q {
+  font-size: larger;
+  text-align: justify;
 }
 
 /*--------------------------------------------------------------
