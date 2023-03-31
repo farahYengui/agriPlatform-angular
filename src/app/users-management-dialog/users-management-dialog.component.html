@@ -1,0 +1,13 @@
+<div class="main-content dialog-container">
+  <div class="container-fluid">
+    <h2 mat-dialog-title>Limited access</h2>
+    <div mat-dialog-content>
+      <p>Enter password</p>
+      <input type="password" [(ngModel)]="inputValue">
+    </div>
+    <div mat-dialog-actions>
+      <button mat-button (click)="onOKClick()">OK</button>
+      <button mat-button >Cancel</button>
+    </div>
+  </div>
+</div>

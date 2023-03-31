@@ -33,7 +33,7 @@ register();
   declarations: [
     AppComponent,
     AdminLayoutComponent,
-    LoginComponent
+    LoginComponent,
   ],
   providers: [],
   schemas: [ CUSTOM_ELEMENTS_SCHEMA ],

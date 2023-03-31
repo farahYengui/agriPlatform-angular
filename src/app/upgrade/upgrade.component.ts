@@ -11,5 +11,17 @@ export class UpgradeComponent implements OnInit {
 
   ngOnInit() {
   }
-
+  showDialog: boolean = true;
+  showUsers: boolean = false;
+  showMessage: boolean = false;
+  inputValue: string;
+  onClick(){
+    if(this.inputValue==="admin"){
+      this.showDialog = false;
+      this.showUsers = true;
+    }
+    else{
+      this.showMessage = true;
+    }
+  }
 }

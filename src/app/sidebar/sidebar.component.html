@@ -3,9 +3,9 @@
     <div class="logo">
         <a href="http://www.creative-tim.com" class="simple-text">
             <div class="logo-img">
-                <img src="/assets/img/angular2-logo-white.png"/>
+                <img src="/assets/img/logo.png"/>
             </div>
-            Creative Tim
+            AgriConsulting
         </a>
     </div>
     <ul class="nav responsive-nav">
@@ -68,8 +68,8 @@
             </a>
         </li>
         <li class="separator hidden-lg hidden-md" *ngIf="isMobileMenu()"></li>
-        <li routerLinkActive="active" *ngFor="let menuItem of menuItems" class="{{menuItem.class}}">
-            <a  [routerLink]="['/home',menuItem.path]">
+        <li routerLinkActive="active" *ngFor="let menuItem of menuItems; let i = index" class="{{menuItem.class}}">
+            <a  [routerLink]="['/home',menuItem.path]" >
                 <i class="{{menuItem.icon}}"></i>
                 <p>{{menuItem.title}}</p>
             </a>
