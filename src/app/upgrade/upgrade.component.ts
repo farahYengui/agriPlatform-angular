@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { MatDialog,MatDialogConfig  } from '@angular/material/dialog';
+import { UsersManagementDialogComponent } from 'app/users-management-dialog/users-management-dialog.component';
+
 
 @Component({
   selector: 'app-upgrade',
@@ -7,7 +10,25 @@ import { Component, OnInit } from '@angular/core';
 })
 export class UpgradeComponent implements OnInit {
 
-  constructor() { }
+  constructor(private dialog: MatDialog) {}
+
+  openCustomAlert() {
+    const dialogConfig = new MatDialogConfig();
+    dialogConfig.data = {
+      title: 'Confirmation',
+      message: 'Are you sure you want to delete this item?'
+    };
+    const dialogRef = this.dialog.open(UsersManagementDialogComponent, dialogConfig);
+    
+
+    dialogRef.afterClosed().subscribe(result => {
+      if (result === true) {
+        console.log('User clicked OK');
+      } else {
+        console.log('User clicked Cancel');
+      }
+    });
+  }
 
   ngOnInit() {
   }
