@@ -38,7 +38,7 @@ register();
     AppComponent,
     AdminLayoutComponent,
     LoginComponent,
-    UsersManagementDialogComponent
+    UsersManagementDialogComponent,
   ],
   providers: [],
   schemas: [ CUSTOM_ELEMENTS_SCHEMA ],
