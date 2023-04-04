@@ -13,9 +13,10 @@ export const ROUTES: RouteInfo[] = [
     { path: 'user', title: 'User Profile',  icon:'pe-7s-user', class: '' },
     { path: 'table', title: 'Clients List',  icon:'pe-7s-note2', class: '' },
     { path: 'add', title: 'add client',  icon:'pe-7s-add-user', class: '' },
+    { path: 'update', title: 'update client',  icon:'pe-7s-refresh-2', class: '' },
     { path: 'typography', title: 'Typography',  icon:'pe-7s-news-paper', class: '' },   
     { path: 'maps', title: 'Maps',  icon:'pe-7s-map-marker', class: '' },
-    // { path: 'notifications', title: 'Notifications',  icon:'pe-7s-bell', class: '' },
+    //  { path: 'icons', title: 'Notifications',  icon:'pe-7s-bell', class: '' },
     { path: 'upgrade', title: 'Users management',  icon:'pe-7s-users', class: 'active-pro' },
 ];
 

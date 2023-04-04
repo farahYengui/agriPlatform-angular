@@ -1,0 +1,18 @@
+.space{
+    padding: 100px;
+}
+.size {
+  display: flex;
+  flex-direction: row;
+}
+.right-btn{
+  display: flex;
+  justify-content: flex-end;
+  margin: 20px;
+}
+
+.print-btn{
+    display: flex;
+    justify-content: flex-end;
+    margin: 50px 50px 0px;
+}

@@ -1,80 +1,158 @@
-<div class="main-content" >
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-md-12">
-                <div class="card">
-                    <div class="header">
-                        <h4 class="title">Light Bootstrap Table Heading</h4>
-                        <p class="category">Created using Roboto Font Family</p>
+<div class="print-btn">
+    <button type="button" class="btn btn-outline-success" (click)="generatePdf()"><i class="pe-7s-print"></i></button>
+</div>
+<div class="text-center">
+    <div class="main-content">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-12">
+                    <div id="to-print" class="space card">
+
+                        <div class="form-group">
+                            <h2 for="clients">Client</h2>
+                            <select class="form-control" id="clients" required name="clients" [selectedIndex]="16">
+                                <option *ngFor="let client of clients" [value]="client">{{client}}</option>
+                            </select>
+                        </div>
+                        <h3>General characteristic</h3>
+                        <div class="row">
+                            <div class="col-xs-6">Name</div>
+                            <div class="col-xs-6">{{ model.name }}</div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-6">Email</div>
+                            <div class="col-xs-6">{{ model.email }}</div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-6">City</div>
+                            <div class="col-xs-6">{{ model.city }}</div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-6">Address</div>
+                            <div class="col-xs-6">{{ model.address }}</div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-6">Size</div>
+                            <div class="col-xs-6">{{ model.size }}</div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-6">Total</div>
+                            <div class="col-xs-6">{{ model.total }}</div>
+                        </div>
+                        <br><br>
+                        <table id="myTable" class="table">
+                            <thead>
+                                <tr>
+                                    <th scope="col">Kind</th>
+                                    <th scope="col">Variety</th>
+                                    <th scope="col">Density(number/ha)</th>
+                                    <th scope="col">planting year</th>
+                                    <th scope="col">Size</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let row of rowData1">
+                                    <td><label>{{row.kind}}</label>
+                                    </td>
+                                    <td><label>{{row.variety}}</label>
+                                    </td>
+                                    <td class="d-flex align-items-center flex-wrap nowrap"
+                                        style="display: inline-flex; align-items: center;">
+                                        <div class="col-3">
+                                            <label>10000/ {{row.densitye}} x {{row.densityE}} =</label>
+
+                                        </div>
+                                    </td>
+
+                                    <td><label>{{row.plantingYear}}</label>
+                                    </td>
+                                    <td><label>{{row.size}}</label>
+                                    </td>
+                                </tr>
+                            </tbody>
+
+                        </table>
+                        <h3> hydraulic network</h3>
+                        <table id="myTable" class="table">
+                            <thead>
+                                <tr>
+                                    <th scope="col"></th>
+                                    <th scope="col">ID</th>
+                                    <th scope="col">Depth</th>
+                                    <th scope="col">Flow</th>
+                                    <th scope="col">Salinity</th>
+                                    <th scope="col">Equipment</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let row2 of rowData2">
+                                    <th>water source</th>
+                                    <td>{{row2.id}}</td>
+                                    <td>{{row2.depth}}</td>
+                                    <td>{{row2.flow}}</td>
+                                    <td>{{row2.salinity}}</td>
+                                    <td>{{row2.equipment}}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <table id="myTable" class="table">
+                            <thead>
+                                <tr>
+                                    <th scope="col"></th>
+                                    <th scope="col">ID</th>
+                                    <th scope="col">capacity</th>
+                                    <th scope="col">Betan</th>
+                                    <th scope="col">Equipment</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let row3 of rowData3">
+                                    <th>pond</th>
+                                    <td>{{row3.id}}</td>
+                                    <td>{{row3.capacity}}</td>
+                                    <td>{{row3.betan}}</td>
+                                    <td>{{row3.equipment}}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <h3> Plan</h3>
+                        <table id="myTable" class="table">
+                            <thead>
+                                <tr>
+                                    <th scope="col" rowspan="2">Sector</th>
+                                    <th scope="col" rowspan="2">Area(ha)</th>
+                                    <th scope="col" colspan="3">Gte</th>
+                                    <th scope="col" rowspan="2">Flow/sector</th>
+                                </tr>
+                                <tr>
+                                    <th scope="col">Nature</th>
+                                    <th scope="col">Egg</th>
+                                    <th scope="col">Flow/g</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let row4 of plan">
+                                    <td>{{row4.sector}}</td>
+                                    <td>{{row4.area}}</td>
+                                    <td>{{row4.nature}}</td>
+                                    <td>{{row4.egg}}</td>
+                                    <td>{{row4.flowg}}</td>
+                                    <td>{{row4.flows}}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <h3> soil</h3>
+                        <label>homogeneous: 9ha</label>
+                        <br><br>
+                        <label>heterogeneous: 5ha </label>
+                        <br>
+                        <label for="">Clay:1ha</label>&nbsp;
+                        <label for="">Lim:1ha</label>&nbsp;
+                        <label for="">Sand:1ha</label>&nbsp;
+                        <label for="">Calc:1ha</label>&nbsp;
+                        <label for="">Gypsum:1ha</label>
                     </div>
-                    <div class="content">
-
-                        <div class="typo-line">
-                            <h1><p class="category">Header 1</p>Light Bootstrap Table Heading </h1>
-                        </div>
-
-                        <div class="typo-line">
-                            <h2><p class="category">Header 2</p>Light Bootstrap Table Heading</h2>
-                        </div>
-                        <div class="typo-line">
-                            <h3><p class="category">Header 3</p>Light Bootstrap Table Heading</h3>
-                        </div>
-                        <div class="typo-line">
-                            <h4><p class="category">Header 4</p>Light Bootstrap Table Heading</h4>
-                        </div>
-                        <div class="typo-line">
-                            <h5><p class="category">Header 5</p>Light Bootstrap Table Heading</h5>
-                        </div>
-                        <div class="typo-line">
-                            <h6><p class="category">Header 6</p>Light Bootstrap Table Heading</h6>
-                        </div>
-                        <div class="typo-line">
-                            <p><span class="category">Paragraph</span>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam.</p>
-                        </div>
-                        <div class="typo-line">
-                            <p class="category">Quote</p>
-                            <blockquote>
-                                <p>
-                                    Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam.
-                                </p>
-                                <small>
-                                    Steve Jobs, CEO Apple
-                                </small>
-                            </blockquote>
-                        </div>
-
-                        <div class="typo-line">
-                            <p class="category">Muted Text</p>
-                            <p class="text-muted">
-                                Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet.
-                            </p>
-                        </div>
-                        <div class="typo-line">
-                            <!--
-                            there are also "text-info", "text-success", "text-warning", "text-danger" clases for the text
-                            -->
-                            <p class="category">Coloured Text
-                            </p>
-                            <p class="text-primary">
-                                Text Primary - Light Bootstrap Table Heading and complex bootstrap dashboard you've ever seen on the internet.
-                            </p>
-                            <p class="text-info">
-                                Text Info - Light Bootstrap Table Heading and complex bootstrap dashboard you've ever seen on the internet.
-                            </p>
-                            <p class="text-success">
-                                Text Success - Light Bootstrap Table Heading and complex bootstrap dashboard you've ever seen on the internet.
-                            </p>
-                            <p class="text-warning">
-                                Text Warning - Light Bootstrap Table Heading and complex bootstrap dashboard you've ever seen on the internet.
-                            </p>
-                            <p class="text-danger">
-                                Text Danger - Light Bootstrap Table Heading and complex bootstrap dashboard you've ever seen on the internet.
-                            </p>
-                        </div>
-                        <div class="typo-line">
-                            <h2><p class="category">Small Tag</p>Header with small subtitle <br><small>".small" is a tag for the headers</small> </h2>
-                        </div>
-                    </div>
+                    <button type="button" class="btn btn-success btn-fill">Edit</button>
                 </div>
             </div>
         </div>

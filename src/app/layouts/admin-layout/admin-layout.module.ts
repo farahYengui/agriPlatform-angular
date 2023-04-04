@@ -16,6 +16,8 @@ import { MapsComponent } from '../../maps/maps.component';
 import { NotificationsComponent } from '../../notifications/notifications.component';
 import { UpgradeComponent } from '../../upgrade/upgrade.component';
 import { AddClientComponent } from 'app/add-client/add-client.component';
+import { UpdateComponent } from 'app/update/update.component';
+import { IconsComponent } from 'app/icons/icons.component';
 
 
 @NgModule({
@@ -34,7 +36,9 @@ import { AddClientComponent } from 'app/add-client/add-client.component';
     AddClientComponent,
     MapsComponent,
     NotificationsComponent,
-    UpgradeComponent
+    UpgradeComponent,
+    UpdateComponent,
+    IconsComponent
   ]
 })
 

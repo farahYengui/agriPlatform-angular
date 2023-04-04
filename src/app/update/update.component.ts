@@ -1,12 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import * as html2pdf from 'html2pdf.js';
 
 @Component({
-  selector: 'app-typography',
-  templateUrl: './typography.component.html',
-  styleUrls: ['./typography.component.css']
+  selector: 'app-update',
+  templateUrl: './update.component.html',
+  styleUrls: ['./update.component.scss']
 })
-export class TypographyComponent implements OnInit {
+export class UpdateComponent implements OnInit {
 
   constructor() { }
   clients = ['Dakota Rice','Minerva Hooper','Sage Rodriguez','Philip Chaney','Doris Greene','Mason Porter']
@@ -24,31 +23,40 @@ export class TypographyComponent implements OnInit {
     { kind: '', variety: '', densitye: '',densityE: '', plantingYear: '', size: '' }
   ];
 
+  addRow1() {
+    this.rowData1.push({ kind: '', variety: '', densitye: '',densityE: '', plantingYear: '', size: '' });
+  }
 
+  c=1;
   rowData2 = [
-    { id: '', depth: '', flow: '',salinity: '', equipment: '' }
+    { id: 'F'+this.c, depth: '', flow: '',salinity: '', equipment: '' }
   ];
 
+  addRow2() {
+    this.c++;
+    this.rowData2.push({ id: 'F'+this.c, depth: '', flow: '',salinity: '', equipment: '' });
+    
+  }
 
   rowData3 = [
     { id: '', capacity: '', betan: '',equipment: '' }
   ];
-  plan = [{sector:1,area:'',nature:'',egg:'',flowg:'',flows:''}];
 
-  addRow4() {
-    this.plan.push({
-      sector: this.plan.length + 1,area:'',nature:'',egg:'',flowg:'',flows:''
-    });
+  addRow3() {
+    this.rowData3.push({ id: '', capacity: '', betan: '',equipment: '' });
   }
 
-  generatePdf() {
-    const element = document.getElementById('to-print'); 
-    html2pdf()
-      .from(element)
-      .save('customer.pdf');
-  }
+    plan = [{sector:1,area:'',nature:'',egg:'',flowg:'',flows:''}];
+
+addRow4() {
+  this.plan.push({
+    sector: this.plan.length + 1,area:'',nature:'',egg:'',flowg:'',flows:''
+  });
+}
+
+
   
-  ngOnInit() {
+  ngOnInit(): void {
   }
 
 }

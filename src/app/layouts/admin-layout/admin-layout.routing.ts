@@ -9,6 +9,8 @@ import { NotificationsComponent } from '../../notifications/notifications.compon
 import { UpgradeComponent } from '../../upgrade/upgrade.component';
 import { UsersManagementDialogComponent } from '../../users-management-dialog/users-management-dialog.component';
 import { AddClientComponent } from 'app/add-client/add-client.component';
+import { UpdateComponent } from 'app/update/update.component';
+import { IconsComponent } from 'app/icons/icons.component';
 
 export const AdminLayoutRoutes: Routes = [
     { path: 'dashboard',      component: HomeComponent },
@@ -19,5 +21,7 @@ export const AdminLayoutRoutes: Routes = [
     { path: 'maps',           component: MapsComponent },
     { path: 'notifications',  component: NotificationsComponent },
     { path: 'upgrade',        component: UpgradeComponent },
+    { path: 'update',        component: UpdateComponent },
+    { path: 'icons',        component: IconsComponent },
     { path: 'umdialog',       component: UsersManagementDialogComponent },
 ];
