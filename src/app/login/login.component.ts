@@ -57,7 +57,6 @@ export class LoginComponent implements OnInit {
     const modal = document.querySelector(".modal");
     const modalButton = document.querySelector(".modal-button");
     const closeButton = document.querySelector(".close-button");
-    const scrollDown = document.querySelector(".scroll-down");
     const navbar = document.getElementById("navbar");
     let isOpened = false;
 
@@ -74,13 +73,6 @@ export class LoginComponent implements OnInit {
       navbar.style.visibility = "visible";
     };
 
-    window.addEventListener("scroll", () => {
-      if (window.scrollY > window.innerHeight / 3 && !isOpened) {
-        isOpened = true;
-        scrollDown[0].style.display = "none";
-        openModal();
-      }
-    });
 
     modalButton.addEventListener("click", openModal);
     closeButton.addEventListener("click", closeModal);

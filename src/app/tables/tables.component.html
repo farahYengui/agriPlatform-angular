@@ -5,18 +5,30 @@
                 <div class="card">
                     <div class="header">
                         <h4 class="title">Clients List</h4>
-                        <p class="category">As a valued user, you have access to our complete client list. See who we've helped:</p>
+                        <p class="category">See our complete client list.</p>
                     </div>
                     <div class="content table-responsive table-full-width">
                           <table class="table table-hover table-striped">
                                 <thead>
                                     <tr>
-                                        <th *ngFor="let cell of tableData1.headerRow">{{ cell }}</th>
+                                        <th>ID</th>
+                                        <th>Name</th>
+                                        <th>Email</th>
+                                        <th>City</th>
+                                        <th>Address</th>
+                                        <th>Size</th>
+                                        <th>Total</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr *ngFor="let row of tableData1.dataRows">
-                                        <td *ngFor="let cell of row">{{cell}}</td>
+                                    <tr *ngFor="let client of clients">
+                                        <td>{{ client.id }}</td>
+                                        <td>{{client.name}}</td>
+                                        <td>{{client.email}}</td>
+                                        <td>{{client.city}}</td>
+                                        <td>{{client.address}}</td>
+                                        <td>{{client.irrigated}} (irrigated) + {{client.noirrigated}} (noirrigated) ={{client.irrigated+client.noirrigated}}</td>
+                                        <td>{{client.total}}</td>
                                     </tr>
                                 </tbody>
                           </table>

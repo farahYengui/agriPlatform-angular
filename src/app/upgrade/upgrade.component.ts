@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog,MatDialogConfig  } from '@angular/material/dialog';
+import { User } from 'app/models/user.model';
+import { UserService } from 'app/services/user.service';
 import { UsersManagementDialogComponent } from 'app/users-management-dialog/users-management-dialog.component';
 
 
@@ -9,9 +11,19 @@ import { UsersManagementDialogComponent } from 'app/users-management-dialog/user
   styleUrls: ['./upgrade.component.css']
 })
 export class UpgradeComponent implements OnInit {
+users: User[];
+  constructor(private dialog: MatDialog, private userService: UserService) {}
 
-  constructor(private dialog: MatDialog) {}
-
+  ngOnInit() {
+      this.userService.getAllUsers().subscribe(
+          (users: User[]) => {
+              this.users = users;
+          },
+          (error: any) => {
+              console.error('Failed to get users:', error);
+          }
+      );
+  }
   openCustomAlert() {
     const dialogConfig = new MatDialogConfig();
     dialogConfig.data = {
@@ -30,8 +42,6 @@ export class UpgradeComponent implements OnInit {
     });
   }
 
-  ngOnInit() {
-  }
   showDialog: boolean = true;
   showUsers: boolean = false;
   showMessage: boolean = false;

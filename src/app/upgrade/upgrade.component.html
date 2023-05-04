@@ -1,20 +1,20 @@
 <div class="dialog-container" *ngIf="showDialog">
     <div class="main-content">
         <div class="container-fluid">
-          <h2>Limited access</h2>
-          <div>
-            <p>Enter password :</p>
-            <input class="form-control" type="password" [(ngModel)]="inputValue">
-          </div>
-          <div class="OK">
-            <button mat-button (click)="onClick()" class="btn btn-round btn-fill btn-success">OK</button>
-            <p class="message" *ngIf="showMessage">Wrong password</p>
-          </div>
+            <h2>Limited access</h2>
+            <div>
+                <p>Enter password :</p>
+                <input class="form-control" type="password" [(ngModel)]="inputValue">
+            </div>
+            <div class="OK">
+                <button mat-button (click)="onClick()" class="btn btn-round btn-fill btn-success">OK</button>
+                <p class="message" *ngIf="showMessage">Wrong password</p>
+            </div>
         </div>
-      </div>
-  </div>
-  
-  <div *ngIf="showUsers">
+    </div>
+</div>
+
+<div *ngIf="showUsers">
     <div class="main-content">
         <div class="container-fluid">
             <div class="row">
@@ -22,7 +22,8 @@
                     <div class="card">
                         <div class="header text-center">
                             <h4 class="title">Users Management </h4>
-                            <p class="category">Efficiently manage user permissions and access levels from a single, centralized location.</p>
+                            <p class="category">Efficiently manage user permissions and access levels from a single,
+                                centralized location.</p>
                             <br>
                         </div>
                         <div class="content table-responsive table-full-width table-upgrade">
@@ -43,55 +44,38 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr>
-                                        <td><h5 class="text-success">1</h5></td>
-                                        <td>Ahmed</td>
-                                        <td>TRIKI</td>
-                                        <td>Ahmed124</td>
-                                        <td>Ahmedagriconsulting@gmail.com</td>
-                                        <td>Road of Tunis klm 8.5, Sfax</td>
-                                        <td>Sfax</td>
-                                        <td>Tunisia</td>
-                                        <td>3021</td>
-                                        <td>Hello world! this is a short description .</td>
+                                    <tr *ngFor="let u of users">
+                                        <td>{{ u.id}}</td>
+                                        <td>{{u.fName}}</td>
+                                        <td>{{u.lName}}</td>
+                                        <td>{{u.username}}</td>
+                                        <td>{{u.email}}</td>
+                                        <td>{{u.address}}</td>
+                                        <td>{{u.city}}</td>
+                                        <td>{{u.country}}</td>
+                                        <td>{{u.code}}</td>
+                                        <td>{{u.description}}</td>
                                         <td class="td-actions text-right">
-                                            <button mat-raised-button type="button" rel="tooltip" title="Edit Task" class="btn btn-success btn-simple btn-xs">
+                                            <button mat-raised-button type="button" rel="tooltip" title="Edit Task"
+                                                class="btn btn-success btn-simple btn-xs">
                                                 <i class="fa fa-edit"></i>
                                             </button>
-                                            <button mat-raised-button type="button" rel="tooltip" (click)="openCustomAlert()" title="Remove" class="btn btn-danger btn-simple btn-xs">
-                                                <i class="fa fa-times"></i>
-                                            </button>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td><h5 class="text-success">2</h5></td>
-                                        <td>Farah</td>
-                                        <td>YENGUI</td>
-                                        <td>Farah99</td>
-                                        <td>farahyengui@gmail.com</td>
-                                        <td>Road of Tunis klm 8.5, Sfax</td>
-                                        <td>Sfax</td>
-                                        <td>Tunisia</td>
-                                        <td>3021</td>
-                                        <td>this is a short description.</td>
-                                        <td class="td-actions text-right">
-                                            <button  mat-raised-button type="button" rel="tooltip" title="Edit Task" class="btn btn-success btn-simple btn-xs">
-                                                <i class="fa fa-edit"></i>
-                                            </button>
-                                            <button mat-raised-button type="button" rel="tooltip" (click)="openCustomAlert()" title="Remove" class="btn btn-danger btn-simple btn-xs">
+                                            <button mat-raised-button type="button" rel="tooltip"
+                                                (click)="openCustomAlert()" title="Remove"
+                                                class="btn btn-danger btn-simple btn-xs">
                                                 <i class="fa fa-times"></i>
                                             </button>
                                         </td>
                                     </tr>
                                 </tbody>
                             </table>
-    
+
                         </div>
                     </div>
                 </div>
             </div>
-    
+
         </div>
     </div>
-    
-  </div>
+
+</div>

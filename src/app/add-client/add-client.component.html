@@ -9,7 +9,7 @@
                             <h2>General characteristic</h2>
                             <label for="name">Name</label>
                             <input type="text" class="form-control ng-untouched ng-pristine ng-valid" id="name" required
-                                [(ngModel)]="model.name" name="name" #name="ngModel">
+                                [(ngModel)]="client.name" name="name" #name="ngModel">
                             <div [hidden]="name.valid || name.pristine" class="alert alert-danger">
                                 Name is required
                             </div>
@@ -17,7 +17,7 @@
                             <div class="form-group">
                                 <label for="email">Email</label>
                                 <input class="form-control ng-untouched ng-pristine ng-valid" type="email" id="email"
-                                    [(ngModel)]="model.email" name="email" required [(ngModel)]="model.email"
+                                    [(ngModel)]="client.email" name="email" required [(ngModel)]="client.email"
                                     #email="ngModel">
                                 <div [hidden]="email.valid || email.pristine" class="alert alert-danger">
                                     Email is required
@@ -26,7 +26,7 @@
 
                             <div class="form-group">
                                 <label for="city">City</label>
-                                <select class="form-control" id="city" required [(ngModel)]="model.city" name="city"
+                                <select class="form-control" id="city" required [(ngModel)]="client.city" name="city"
                                     [selectedIndex]="16">
                                     <option *ngFor="let city of cities" [value]="city">{{city}}</option>
                                 </select>
@@ -34,23 +34,23 @@
                             <div class="form-group">
                                 <label for="address">Address</label>
                                 <input class="form-control ng-untouched ng-pristine ng-valid" type="text"
-                                    class="form-control" id="address" [(ngModel)]="model.address" name="address">
+                                    class="form-control" id="address" [(ngModel)]="client.address" name="address">
                             </div>
                             <div class="form-group">
                                 <label for="size">Size</label>
                                 <div class="size">
                                     <input class="form-control ng-untouched ng-pristine ng-valid" type="text"
-                                        class="form-control" id="size" [(ngModel)]="model.size" name="size">
+                                        class="form-control" id="irrigated" [(ngModel)]="client.irrigated" name="irrigated">
                                     <input value="Irrigated" disabled> &nbsp;
                                     <input class="form-control ng-untouched ng-pristine ng-valid" type="text"
-                                        class="form-control" id="size" [(ngModel)]="model.size" name="size">
+                                        class="form-control" id="noirrigated" [(ngModel)]="client.noirrigated" name="noirrigated">
                                     <input value="No irrigated" disabled>
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label for="total">Total</label>
                                 <input class="form-control ng-untouched ng-pristine ng-valid" type="text"
-                                    class="form-control" id="total" [(ngModel)]="model.total" name="total">
+                                    class="form-control" id="total" [(ngModel)]="client.total" name="total">
                             </div>
                             <table id="myTable" class="table">
                                 <thead>
@@ -241,22 +241,22 @@
                         <div class="card padding-form">
                             <h2> soil</h2>
                             <label>homogeneous</label>
-                            <input class="form-control ng-untouched ng-pristine" type="text" placeholder="area(ha)">
+                            <input class="form-control ng-untouched ng-pristine" type="text" placeholder="area(ha)" [(ngModel)]="client.homogenous">
                             <br><br>
                             <label>heterogeneous</label>
-                            <input class="form-control ng-untouched ng-pristine" type="text" placeholder="area(ha)">
+                            <input class="form-control ng-untouched ng-pristine" type="text" placeholder="area(ha)" [(ngModel)]="client.heterogenous">
                             <br>
                             <div class="size">
                                 <label for="">Clay</label>
-                                <input class="form-control ng-untouched ng-pristine" type="text" placeholder="area(ha)">
-                                <label for="">Lim</label>
-                                <input class="form-control ng-untouched ng-pristine" type="text" placeholder="area(ha)">
+                                <input class="form-control ng-untouched ng-pristine" type="text" placeholder="area(ha)" [(ngModel)]="client.clay">
+                                <label for="">Silt</label>
+                                <input class="form-control ng-untouched ng-pristine" type="text" placeholder="area(ha)" [(ngModel)]="client.silt">
                                 <label for="">Sand</label>
-                                <input class="form-control ng-untouched ng-pristine" type="text" placeholder="area(ha)">
-                                <label for="">Calc</label>
-                                <input class="form-control ng-untouched ng-pristine" type="text" placeholder="area(ha)">
+                                <input class="form-control ng-untouched ng-pristine" type="text" placeholder="area(ha)" [(ngModel)]="client.sand">
+                                <label for="">Limestone</label>
+                                <input class="form-control ng-untouched ng-pristine" type="text" placeholder="area(ha)" [(ngModel)]="client.limestone">
                                 <label for="">Gypsum</label>
-                                <input class="form-control ng-untouched ng-pristine" type="text" placeholder="area(ha)">    
+                                <input class="form-control ng-untouched ng-pristine" type="text" placeholder="area(ha)" [(ngModel)]="client.gypsum">    
                             </div>
                         </div>
                     </div>
@@ -279,27 +279,27 @@
                         <h3>General characteristic</h3>
                         <div class="row">
                             <div class="col-xs-6">Name</div>
-                            <div class="col-xs-6">{{ model.name }}</div>
+                            <div class="col-xs-6">{{ client.name }}</div>
                         </div>
                         <div class="row">
                             <div class="col-xs-6">Email</div>
-                            <div class="col-xs-6">{{ model.email }}</div>
+                            <div class="col-xs-6">{{ client.email }}</div>
                         </div>
                         <div class="row">
                             <div class="col-xs-6">City</div>
-                            <div class="col-xs-6">{{ model.city }}</div>
+                            <div class="col-xs-6">{{ client.city }}</div>
                         </div>
                         <div class="row">
                             <div class="col-xs-6">Address</div>
-                            <div class="col-xs-6">{{ model.address }}</div>
+                            <div class="col-xs-6">{{ client.address }}</div>
                         </div>
                         <div class="row">
                             <div class="col-xs-6">Size</div>
-                            <div class="col-xs-6">{{ model.size }}</div>
+                            <div class="col-xs-6">{{ client.irrigated }} irrigated & {{ client.noirrigated }} no irrigated</div>
                         </div>
                         <div class="row">
                             <div class="col-xs-6">Total</div>
-                            <div class="col-xs-6">{{ model.total }}</div>
+                            <div class="col-xs-6">{{ client.total }}</div>
                         </div>
                         <table id="myTable" class="table">
                             <thead>
@@ -403,15 +403,15 @@
                                 </tbody>
                             </table>
                             <h3> soil</h3>
-                            <label>homogeneous: 9ha</label>
+                            <label>homogeneous: {{ client.homogenous }}</label>
                             <br><br>
-                            <label>heterogeneous: 5ha </label>
+                            <label>heterogeneous: {{ client.heterogenous }} </label>
                             <br>
-                                <label for="">Clay:1ha</label>&nbsp;
-                                <label for="">Lim:1ha</label>&nbsp;
-                                <label for="">Sand:1ha</label>&nbsp;
-                                <label for="">Calc:1ha</label>&nbsp;
-                                <label for="">Gypsum:1ha</label>    
+                                <label for="">Clay: {{ client.clay }}</label>&nbsp;
+                                <label for="">Silt: {{ client.silt }}</label>&nbsp;
+                                <label for="">Sand: {{ client.sand }}</label>&nbsp;
+                                <label for="">Limestone: {{ client.limestone }}</label>&nbsp;
+                                <label for="">Gypsum: {{ client.gypsum }}</label>    
                         <br>
                         <button type="button" class="btn btn-success btn-fill" (click)="submitted=false">Edit</button>
                     </div>

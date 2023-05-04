@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Client } from 'app/models/client.model';
+import { ClientService } from 'app/services/client.service';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-update',
@@ -7,56 +10,119 @@ import { Component, OnInit } from '@angular/core';
 })
 export class UpdateComponent implements OnInit {
 
-  constructor() { }
-  clients = ['Dakota Rice','Minerva Hooper','Sage Rodriguez','Philip Chaney','Doris Greene','Mason Porter']
+  clients: Client[] = [];
+  selectedName: string;
+  client: Client;
+  constructor(private clientService: ClientService,private location: Location) { }
   cities = ['Ariana', 'Beja', 'Ben Arous', 'Bizerte', 'Gabes', 'Gafsa', 'Jendouba', 'Kairouan', 'Kasserine',
-   'Kebili', 'Kef', 'Mahdia', 'Manouba', 'Medenine', 
-  'Monastir', 'Nabeul', 'Sfax', 'Sidi Bouzid', 'Siliana', 'Sousse', 'Tataouine', 'Tozeur', 'Tunis', 'Zaghouan'];
+    'Kebili', 'Kef', 'Mahdia', 'Manouba', 'Medenine',
+    'Monastir', 'Nabeul', 'Sfax', 'Sidi Bouzid', 'Siliana', 'Sousse', 'Tataouine', 'Tozeur', 'Tunis', 'Zaghouan'];
 
-  model = {id:18, name:'Dr. IQ',email:"iq@gmail.com", city: this.cities[0], address:'Regueb',size:'5ha',sizen:'2ha',total:"3000 arbre olive"};
 
   submitted = false;
-  onSubmit() { this.submitted = true; }
-  
+  form = true;
+  onSubmit() { 
+    this.submitted = true;
+    this.clientService.updateClient(this.selectedName,this.client).subscribe(
+      (updatedClient: Client) => {
+        console.log('Client updated:', updatedClient);
+      },
+      (error: any) => {
+        console.error('Failed to update client:', error);
+      }
+    );
+   }
+  getClientByName() {
 
-  rowData1 = [
-    { kind: '', variety: '', densitye: '',densityE: '', plantingYear: '', size: '' }
-  ];
-
-  addRow1() {
-    this.rowData1.push({ kind: '', variety: '', densitye: '',densityE: '', plantingYear: '', size: '' });
+    this.clientService.getClientByName(this.selectedName).subscribe(
+      (response) => {
+        this.client = response;
+        console.log('client:', this.client);
+      },
+      (error) => {
+        console.error('Error:', error);
+      }
+    );
   }
 
-  c=1;
+  rowData1 = [
+    { id: 1, kind: '', variety: '', density: '', plantingYear: '', size: '' }
+  ];
+  counter = 1;
+
+  addRow1(event: Event) {
+    event.preventDefault();
+    this.counter++;
+    this.rowData1.push({ id: this.counter, kind: '', variety: '', density: '', plantingYear: '', size: '' });
+  }
+
+  trackByFn(index, item) {
+    return item.id;
+  }
+
+  c = 1;
   rowData2 = [
-    { id: 'F'+this.c, depth: '', flow: '',salinity: '', equipment: '' }
+    { id: 'F' + this.c, depth: '', flow: '', salinity: '', equipment: '' }
   ];
 
-  addRow2() {
+  addRow2(event: Event) {
+    event.preventDefault();
     this.c++;
-    this.rowData2.push({ id: 'F'+this.c, depth: '', flow: '',salinity: '', equipment: '' });
-    
+    this.rowData2.push({ id: 'F' + this.c, depth: '', flow: '', salinity: '', equipment: '' });
+
   }
 
   rowData3 = [
-    { id: '', capacity: '', betan: '',equipment: '' }
+    { id: '', capacity: '', betan: '', equipment: '' }
   ];
 
-  addRow3() {
-    this.rowData3.push({ id: '', capacity: '', betan: '',equipment: '' });
+  addRow3(event: Event) {
+    event.preventDefault();
+    this.rowData3.push({ id: '', capacity: '', betan: '', equipment: '' });
+  }
+  plan = [{ sector: 1, area: '', nature: '', egg: '', flowg: '', flows: '' }];
+
+  addRow4(event: Event) {
+    event.preventDefault();
+    this.plan.push({
+      sector: this.plan.length + 1, area: '', nature: '', egg: '', flowg: '', flows: ''
+    });
   }
 
-    plan = [{sector:1,area:'',nature:'',egg:'',flowg:'',flows:''}];
-
-addRow4() {
-  this.plan.push({
-    sector: this.plan.length + 1,area:'',nature:'',egg:'',flowg:'',flows:''
-  });
-}
 
 
+  ngOnInit() {
+
+    this.clientService.getAllClients().subscribe(
+      (clients: Client[]) => {
+        this.clients = clients;
+        if (clients.length > 0) {
+          this.selectedName = clients[0].name;
+          this.form = false;
+          this.getClientByName();
+        }
+      },
+      (error: any) => {
+        console.error('Failed to get clients:', error);
+      }
+    );
+
+  }
+  delete(){
+    if (confirm("Are you sure you want to delete this client?")) {
+      this.clientService.deleteClient(this.selectedName).subscribe(
+        () => {
+          console.log(`Client with name ${this.selectedName} deleted.`);
+          this.location.go('/home/update');
+    window.location.reload();
+        },
+        (error) => {
+          console.error(`Failed to delete client with name ${this.selectedName}:`, error);
+          this.location.go('/home/update');
+          window.location.reload();
+        }
+      );
+    }
+  }
   
-  ngOnInit(): void {
-  }
-
 }
