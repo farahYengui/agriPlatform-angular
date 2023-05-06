@@ -14,32 +14,33 @@ export class UserComponent implements OnInit {
     username: '',
     description: '',
     email: '',
-    fName: '',
-    lName: '',
+    fname: '',
+    lname: '',
     password: '',
     address: '',
     city: '',
     country: '',
     code: 0,
+    fb:'',
+    insta:'',
+    linkedin:''
 
   }
   users: User[];
   constructor(private userService: UserService) { }
-  getUsers() {
-    this.userService.getAllUsers.subscribe(users => this.users = users);
-  }
+
 
   getUserById(id: number) {
     this.userService.getUserById(id)
       .subscribe(user => {
-        
+        this.user=user;
+        console.log(user)
       });
   }
   onSubmit() {
     this.userService.updateUser(1,this.user)
     .subscribe(user => {
-      console.log('User updated successfully!');
-      this.getUsers();
+      alert('User updated successfully!');
     });
     /*this.userService.createUser(this.user).subscribe(
       (createdUser: User) => {
@@ -53,6 +54,7 @@ export class UserComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.getUserById(1);
   }
 
 }

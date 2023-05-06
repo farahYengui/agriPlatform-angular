@@ -1,17 +1,18 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { Client } from 'app/models/client.model';
 import { ClientService } from 'app/services/client.service';
+import { NgForm } from '@angular/forms';
 @Component({
   selector: 'app-add-client',
   templateUrl: './add-client.component.html',
   styleUrls: ['./add-client.component.scss']
 })
 export class AddClientComponent implements OnInit {
-
+  @ViewChild('heroForm') form: NgForm;
   cities = ['Ariana', 'Beja', 'Ben Arous', 'Bizerte', 'Gabes', 'Gafsa', 'Jendouba', 'Kairouan', 'Kasserine',
     'Kebili', 'Kef', 'Mahdia', 'Manouba', 'Medenine',
     'Monastir', 'Nabeul', 'Sfax', 'Sidi Bouzid', 'Siliana', 'Sousse', 'Tataouine', 'Tozeur', 'Tunis', 'Zaghouan'];
-
+  
   client: Client = {
     id: null,
     name: '',
@@ -32,16 +33,25 @@ export class AddClientComponent implements OnInit {
   };
   submitted = false;
   onSubmit() {
-    this.submitted = true;
-    console.log('submitted')
-    this.clientService.createClient(this.client).subscribe(
-      (createdclient: Client) => {
-        console.log('client created:', createdclient);
-      },
-      (error: any) => {
-        console.error('Failed to create user:', error);
-      }
-    );
+    console.log('submitted');
+    this.clientService.getAllClientNames().subscribe(names => {
+      if (names.includes(this.client.name))
+      alert('Client Name already exists');
+    else {
+      this.clientService.createClient(this.client).subscribe(
+        (createdclient: Client) => {
+          console.log('client created:', createdclient);
+          this.submitted = true;
+
+        },
+        (error: any) => {
+          alert('Failed to create user' );
+        }
+      );
+    }
+    });
+
+    
   }
 
 
@@ -92,6 +102,10 @@ export class AddClientComponent implements OnInit {
 
   constructor(private clientService: ClientService) { }
   ngOnInit(): void {
+  }
+  onReset() {
+    this.form.reset();
+    this.submitted = false;
   }
 
 }

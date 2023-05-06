@@ -112,12 +112,12 @@ export class UpdateComponent implements OnInit {
     if (confirm("Are you sure you want to delete this client?")) {
       this.clientService.deleteClient(this.selectedName).subscribe(
         () => {
-          console.log(`Client with name ${this.selectedName} deleted.`);
+          alert(`Client with name ${this.selectedName} deleted.`);
           this.location.go('/home/update');
     window.location.reload();
         },
         (error) => {
-          console.error(`Failed to delete client with name ${this.selectedName}:`, error);
+          alert (`Failed to delete client with name ${this.selectedName}:`+ error);
           this.location.go('/home/update');
           window.location.reload();
         }

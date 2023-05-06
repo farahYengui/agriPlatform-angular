@@ -31,5 +31,8 @@ export class ClientService {
   deleteClient(name: String): Observable<void> {
     return this.http.delete<void>(`${this.baseUrl}/${name}`);
   }
+  getAllClientNames(): Observable<string[]> {
+    return this.http.get<string[]>(`${this.baseUrl}/names`);
+  }
    
 }
