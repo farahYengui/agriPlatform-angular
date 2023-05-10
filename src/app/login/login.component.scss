@@ -5,7 +5,10 @@
   
 }
 
-
+.justify-p{
+  text-align: justify;
+  text-justify: inter-word;
+}
 // .container {
 //   height: 100vh;
 //    width: 100%;
@@ -54,6 +57,9 @@ h6 {
   height: 40px;
   border-radius: 4px;
   transition: all 0.4s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .back-to-top i {
@@ -590,6 +596,7 @@ section {
   display: flex;
   align-items: center;
 }
+
 
 /*--------------------------------------------------------------
 # Why Us

@@ -10,36 +10,36 @@
 
                         <div class="form-group">
                             <h2 for="clients">Client</h2>
-                            <select class="form-control" id="clients" required name="clients" [selectedIndex]="16">
-                                <option *ngFor="let client of clients" [value]="client">{{client}}</option>
+                            <select class="form-control" id="clients" name="clients" [(ngModel)]="selectedName"
+                                *ngIf="clients" (change)="getClientByName()">
+                                <option *ngFor="let c of clients || []" [value]="c.name">{{c.name}}</option>
                             </select>
                         </div>
                         <h3>General characteristic</h3>
                         <div class="row">
                             <div class="col-xs-6">Name</div>
-                            <div class="col-xs-6">{{ model.name }}</div>
+                            <div class="col-xs-6">{{ client.name }}</div>
                         </div>
                         <div class="row">
                             <div class="col-xs-6">Email</div>
-                            <div class="col-xs-6">{{ model.email }}</div>
+                            <div class="col-xs-6">{{ client.email }}</div>
                         </div>
                         <div class="row">
                             <div class="col-xs-6">City</div>
-                            <div class="col-xs-6">{{ model.city }}</div>
+                            <div class="col-xs-6">{{ client.city }}</div>
                         </div>
                         <div class="row">
                             <div class="col-xs-6">Address</div>
-                            <div class="col-xs-6">{{ model.address }}</div>
+                            <div class="col-xs-6">{{ client.address }}</div>
                         </div>
                         <div class="row">
                             <div class="col-xs-6">Size</div>
-                            <div class="col-xs-6">{{ model.size }}</div>
+                            <div class="col-xs-6">{{ client.irrigated }} irrigated & {{ client.noirrigated }} no irrigated</div>
                         </div>
                         <div class="row">
                             <div class="col-xs-6">Total</div>
-                            <div class="col-xs-6">{{ model.total }}</div>
+                            <div class="col-xs-6">{{ client.total }}</div>
                         </div>
-                        <br><br>
                         <table id="myTable" class="table">
                             <thead>
                                 <tr>
@@ -59,8 +59,8 @@
                                     <td class="d-flex align-items-center flex-wrap nowrap"
                                         style="display: inline-flex; align-items: center;">
                                         <div class="col-3">
-                                            <label>10000/ {{row.densitye}} x {{row.densityE}} =</label>
-
+                                            <!-- <label>10000/ {{row.densitye}} x {{row.densityE}} ={{10000/row.densitye*row.densityE}}</label> -->
+                                            <label>{{row.density}}</label>
                                         </div>
                                     </td>
 
@@ -116,43 +116,41 @@
                             </tbody>
                         </table>
                         <h3> Plan</h3>
-                        <table id="myTable" class="table">
-                            <thead>
-                                <tr>
-                                    <th scope="col" rowspan="2">Sector</th>
-                                    <th scope="col" rowspan="2">Area(ha)</th>
-                                    <th scope="col" colspan="3">Gte</th>
-                                    <th scope="col" rowspan="2">Flow/sector</th>
-                                </tr>
-                                <tr>
-                                    <th scope="col">Nature</th>
-                                    <th scope="col">Egg</th>
-                                    <th scope="col">Flow/g</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr *ngFor="let row4 of plan">
-                                    <td>{{row4.sector}}</td>
-                                    <td>{{row4.area}}</td>
-                                    <td>{{row4.nature}}</td>
-                                    <td>{{row4.egg}}</td>
-                                    <td>{{row4.flowg}}</td>
-                                    <td>{{row4.flows}}</td>
-                                </tr>
-                            </tbody>
-                        </table>
-                        <h3> soil</h3>
-                        <label>homogeneous: 9ha</label>
-                        <br><br>
-                        <label>heterogeneous: 5ha </label>
-                        <br>
-                        <label for="">Clay:1ha</label>&nbsp;
-                        <label for="">Silt:1ha</label>&nbsp;
-                        <label for="">Sand:1ha</label>&nbsp;
-                        <label for="">Limestone:1ha</label>&nbsp;
-                        <label for="">Gypsum:1ha</label>
-                    </div>
-                    <button type="button" class="btn btn-success btn-fill">Edit</button>
+                            <table id="myTable" class="table">
+                                <thead>
+                                    <tr>
+                                        <th scope="col" rowspan="2">Sector</th>
+                                        <th scope="col" rowspan="2">Area(ha)</th>
+                                        <th scope="col" colspan="3">Gte</th>
+                                        <th scope="col" rowspan="2">Flow/sector</th>
+                                    </tr>
+                                    <tr>
+                                        <th scope="col">Nature</th>
+                                        <th scope="col">Egg</th>
+                                        <th scope="col">Flow/g</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr *ngFor="let row4 of plan">
+                                        <td>{{row4.sector}}</td>
+                                        <td>{{row4.area}}</td>
+                                        <td>{{row4.nature}}</td>
+                                        <td>{{row4.egg}}</td>
+                                        <td>{{row4.flowg}}</td>
+                                        <td>{{row4.flows}}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <h3> soil</h3>
+                            <label>homogeneous: {{ client.homogenous }}</label>
+                            <br><br>
+                            <label>heterogeneous: {{ client.heterogenous }} </label>
+                            <br>
+                                <label for="">Clay: {{ client.clay }}</label>&nbsp;
+                                <label for="">Silt: {{ client.silt }}</label>&nbsp;
+                                <label for="">Sand: {{ client.sand }}</label>&nbsp;
+                                <label for="">Limestone: {{ client.limestone }}</label>&nbsp;
+                                <label for="">Gypsum: {{ client.gypsum }}</label>    
                 </div>
             </div>
         </div>
