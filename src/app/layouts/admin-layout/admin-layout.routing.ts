@@ -11,17 +11,19 @@ import { UsersManagementDialogComponent } from '../../users-management-dialog/us
 import { AddClientComponent } from 'app/add-client/add-client.component';
 import { UpdateComponent } from 'app/update/update.component';
 import { IconsComponent } from 'app/icons/icons.component';
+import { ScheduleComponent } from 'app/schedule/schedule.component';
 
 export const AdminLayoutRoutes: Routes = [
     { path: 'dashboard',      component: HomeComponent },
     { path: 'user',           component: UserComponent },
     { path: 'table',          component: TablesComponent },
     { path: 'typography',     component: TypographyComponent },
-    { path: 'add',          component: AddClientComponent },
+    { path: 'add',            component: AddClientComponent },
     { path: 'maps',           component: MapsComponent },
     { path: 'notifications',  component: NotificationsComponent },
     { path: 'upgrade',        component: UpgradeComponent },
-    { path: 'update',        component: UpdateComponent },
-    { path: 'icons',        component: IconsComponent },
+    { path: 'update',         component: UpdateComponent },
+    { path: 'icons',          component: IconsComponent },
     { path: 'umdialog',       component: UsersManagementDialogComponent },
+    { path: 'schedule',       component: ScheduleComponent }
 ];

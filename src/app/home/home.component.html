@@ -3,21 +3,19 @@
         <div class="row">
             <div class="col-md-4">
                 <lbd-chart
-                  [title]="'Email Statistics'"
-                  [subtitle]="'Last Campaign Performance'"
+                  [title]="'Farm Sizes'"
+                  [subtitle]="'% of farms according to their surface area'"
                   [chartClass]="'ct-perfect-fourth'"
                   [chartType]="emailChartType"
                   [chartData]="emailChartData"
                   [legendItems]="emailChartLegendItems"
-                  [withHr]="true"
-                  [footerIconClass]="'fa fa-clock-o'"
-                  [footerText]="'Campaign sent 2 days ago'">
+                  >
                 </lbd-chart>
             </div>
             <div class="col-md-8">
                 <lbd-chart
-                  [title]="'Users Behavior'"
-                  [subtitle]="'24 Hours performance'"
+                  [title]="'Customer Satisfaction'"
+                  [subtitle]="'1 year performance'"
                   [chartType]="hoursChartType"
                   [chartData]="hoursChartData"
                   [chartOptions]="hoursChartOptions"

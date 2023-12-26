@@ -1,13 +1,25 @@
 <div class="main-content">
-
-          <ngui-map (mapReady$)="onMapReady($event)" zoom="10" center="34.7430757,10.7393285" style="margin-top:60px;height: 100%; width: 100%; position: absolute;top: 0px;
-    left: 0px;
-    background-color: rgb(229, 227, 223);">
-              <marker *ngFor="let marker of markers" [position]="marker"
-              draggable="true"></marker>
-              
-          </ngui-map>
-          <button id="btn" (click)="onClick()"></button>
-          <button id="save" (click)="onSave()"></button>
+  <ngui-map (mapReady$)="onMapReady($event)" zoom="10" center="34.7430757,10.7393285" style="margin-top:60px;height: 100%; width: 100%; position: absolute;top: 0px;
+      left: 0px;
+      background-color: rgb(229, 227, 223);">
+    <marker *ngFor="let marker of markers" [position]="marker" draggable="true"></marker>
+  </ngui-map>
+  <button id="btn" (click)="onClick()"></button>
+  <button id="save" (click)="onSave()"></button>
+</div>
+<div class="window" [ngClass]="{ 'open': isWindowOpen }">
+  <div class="close-button">
+    <button (click)="toggleWindow()">X</button>
+  </div>
+  <div *ngIf="listClients && listClients.length > 0 else emptyList">
+    <h2>Select a Client</h2>
+    <select [(ngModel)]="selectedName" class="form-control">
+      <option *ngFor="let client of listClients" [value]="client.name">{{client.name}}</option>
+    </select>
+    <button class="form-control" (click)="onSelectNew()">Choose</button>
+  </div>
+  <ng-template #emptyList>
+    <p>No client to add to the map</p>
+  </ng-template>
 
 </div>

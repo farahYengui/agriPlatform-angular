@@ -18,7 +18,8 @@ import { UpgradeComponent } from '../../upgrade/upgrade.component';
 import { AddClientComponent } from 'app/add-client/add-client.component';
 import { UpdateComponent } from 'app/update/update.component';
 import { IconsComponent } from 'app/icons/icons.component';
-
+import { ScheduleComponent } from 'app/schedule/schedule.component';
+import { FullCalendarModule } from '@fullcalendar/angular';
 
 @NgModule({
   imports: [
@@ -26,8 +27,10 @@ import { IconsComponent } from 'app/icons/icons.component';
     RouterModule.forChild(AdminLayoutRoutes),
     FormsModule,
     LbdModule,
-    NguiMapModule.forRoot({apiUrl: 'https://maps.google.com/maps/api/js?key=AIzaSyCOZBPNbTBkwLt997M2I7hdJfVkD5l73rw'})
+    NguiMapModule.forRoot({apiUrl: 'https://maps.google.com/maps/api/js?key=AIzaSyCOZBPNbTBkwLt997M2I7hdJfVkD5l73rw'}),
+    FullCalendarModule
   ],
+  
   declarations: [
     HomeComponent,
     UserComponent,
@@ -38,8 +41,9 @@ import { IconsComponent } from 'app/icons/icons.component';
     NotificationsComponent,
     UpgradeComponent,
     UpdateComponent,
-    IconsComponent
-  ]
+    IconsComponent,
+    ScheduleComponent
+  ],
 })
 
 export class AdminLayoutModule {}

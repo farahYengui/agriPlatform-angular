@@ -1,0 +1,38 @@
+<div class="main-content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card padding-form">
+
+                    <h2>Appointments</h2>
+                    <ul>
+                        <li *ngFor="let appointment of appointments">
+                            {{ appointment.client }} - {{ appointment.date | date }}
+                        </li>
+                    </ul>
+                </div>
+
+                <div></div>
+            </div>
+        </div>
+    </div>
+    <div class="main-content">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="card padding-form">
+                        <h2>Add Appointment</h2>
+                        <form (ngSubmit)="addAppointment(selectedName, date.value)">
+                            <label>Client:  <select class="form-control" id="clients" name="clients" [(ngModel)]="selectedName"
+                                *ngIf="clients" (change)="getClientByName()">
+                                <option *ngFor="let c of clients || []" [value]="c.name">{{c.name}}</option>
+                            </select></label>
+                            <label>Date: <input class="form-control" type="datetime-local" #date required></label>
+                            <button type="submit">Add Appointment</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

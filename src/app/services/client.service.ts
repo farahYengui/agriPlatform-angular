@@ -34,5 +34,8 @@ export class ClientService {
   getAllClientNames(): Observable<string[]> {
     return this.http.get<string[]>(`${this.baseUrl}/names`);
   }
+  getAllLocations(): Observable<string[]> {
+    return this.http.get<string[]>(`${this.baseUrl}/maps`);
+  }
    
 }

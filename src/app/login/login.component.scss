@@ -123,6 +123,26 @@ h6 {
   margin-top: 70px;
 }
 
+
+.connect-with{
+  font-size: 18px;
+  display: inline-block;
+  background: #34501a;
+  color: #fff;
+  line-height: 1;
+  padding: 8px 0;
+  margin-right: 4px;
+  border-radius: 50%;
+  text-align: center;
+  width: 36px;
+  height: 36px;
+  transition: 0.3s;
+}
+.connect-with:hover{
+background: #7aaf47;
+  color: #fff;
+  text-decoration: none;
+}
 /*--------------------------------------------------------------
 # Navigation Menu
 --------------------------------------------------------------*/
@@ -298,6 +318,8 @@ h6 {
 .navbar-mobile .dropdown>.dropdown-active {
   display: block;
 }
+
+
 
 /*--------------------------------------------------------------
 # Hero Section
@@ -1354,6 +1376,7 @@ q {
   }
 
   &-buttons {
+    margin: 10px;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -1362,6 +1385,12 @@ q {
       color: rgba(#333, 0.6);
       font-size: 14px;
     }
+  }
+  &-buttons-center {
+    margin: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
 }
 
@@ -1445,24 +1474,7 @@ q {
   cursor: pointer;
 }
 
-.scroll-down {
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-  color: darken(#7aaf47, 5%);
-  font-size: 32px;
-  font-weight: 800;
-  transform: translate(-50%, -50%);
-  svg {
-    margin-top: 16px;
-    width: 52px;
-    fill: currentColor;
-  }
-}
+
 
 
 @media(max-width: 750px) {

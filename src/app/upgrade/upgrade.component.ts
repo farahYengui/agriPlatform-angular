@@ -3,7 +3,7 @@ import { MatDialog,MatDialogConfig  } from '@angular/material/dialog';
 import { User } from 'app/models/user.model';
 import { UserService } from 'app/services/user.service';
 import { UsersManagementDialogComponent } from 'app/users-management-dialog/users-management-dialog.component';
-
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-upgrade',
@@ -12,7 +12,7 @@ import { UsersManagementDialogComponent } from 'app/users-management-dialog/user
 })
 export class UpgradeComponent implements OnInit {
 users: User[];
-  constructor(private dialog: MatDialog, private userService: UserService) {}
+  constructor(private dialog: MatDialog, private userService: UserService,private location: Location) {}
 
   ngOnInit() {
       this.userService.getAllUsers().subscribe(
@@ -24,7 +24,7 @@ users: User[];
           }
       );
   }
-  openCustomAlert() {
+  openCustomAlert(id) {
     const dialogConfig = new MatDialogConfig();
     dialogConfig.data = {
       title: 'Confirmation',
@@ -36,6 +36,16 @@ users: User[];
     dialogRef.afterClosed().subscribe(result => {
       if (result === true) {
         console.log('User clicked OK');
+        this.userService.deleteUser(id).subscribe(
+          () => {
+            alert(`Client with id ${id} deleted.`);
+            this.location.go('/home/upgrade');
+      window.location.reload();
+          },(error) => {
+            this.location.go('/home/update');
+            window.location.reload();
+          }
+        );
       } else {
         console.log('User clicked Cancel');
       }

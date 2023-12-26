@@ -3,17 +3,24 @@
     <div class="modal-left">
       <h1 class="modal-title">Welcome!</h1>
       <p class="modal-desc">It's a pleasure to have you with us today!</p>
+      
       <div class="input-block">
-        <label for="email" class="input-label">Email</label>
-        <input type="email" name="email" id="email" placeholder="Email">
+        <label class="input-label">Email</label>
+        <input type="email" placeholder="Email" [(ngModel)]="email">
       </div>
+      <br>
       <div class="input-block">
         <label for="password" class="input-label">Password</label>
-        <input type="password" name="password" id="password" placeholder="Password">
+        <input type="password" name="password" id="password" placeholder="Password" [(ngModel)]="password">
       </div>
       <div class="modal-buttons">
         <a href="" class="">Forgot your password?</a>
         <button class="input-button" (click)="onLogin()">Login</button>
+      </div>
+      <div class="modal-buttons-center">
+        <button class="connect-with" (click)="connectWithGoogle()"><i class="fab fa-google"></i></button>
+        <button class="connect-with"><i class="fab fa-facebook"></i></button>
+        
       </div>
       <p class="sign-up">Don't have an account? <a href="#">Sign up now</a></p>
     </div>
@@ -269,7 +276,7 @@
 
       <div class="section-title">
         <h2>Services</h2>
-        <p class="justify-p">We advise clients across the agricultural value chain on a broad range of topics,
+        <p>We advise clients across the agricultural value chain on a broad range of topics,
           including but not limited to:</p>
       </div>
 
@@ -359,7 +366,7 @@
           </p>
         </div>
         <div class="col-lg-3 cta-btn-container text-center">
-          <a class="cta-btn " href="#">Call To Action</a>
+          <a class="cta-btn " href="#contact">Call To Action</a>
         </div>
       </div>
 
@@ -500,7 +507,7 @@
               <div class="error-message"></div>
               <div class="sent-message">Your message has been sent. Thank you!</div>
             </div>
-            <div class="text-center"><button type="submit">Send Message</button></div>
+            <div class="text-center"><button type="submit" (click)="sendMessage()">Send Message</button></div>
           </form>
         </div>
 
